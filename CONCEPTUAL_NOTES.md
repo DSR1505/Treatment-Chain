@@ -63,7 +63,9 @@ Right now in order to test the above process we will choose India as country and
 
 To be researched.
 
-References: [The Health Indicators](https://en.wikipedia.org/wiki/Health_indicator)
+References: 
+
+[The Health Indicators](https://en.wikipedia.org/wiki/Health_indicator)
 
 ## Create the list of insights we can get from the data of the patients ##
 
