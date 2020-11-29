@@ -9,6 +9,8 @@ making the [transaction](#what-is-a-transaction) and verifying the transaction o
 participating entity. i.e. Hospitals and Reasearch Institute. If somebody
 lost the key-pairs it will lose all the ownership over the transactions.
 
+Each and every entitty participating in the system.
+
 ## What is a Transaction ##
 
 There will be three types transactions:
@@ -18,14 +20,14 @@ There will be three types transactions:
     
 All three transactions will be from the Hospital to itself.All the transactions will be verified by the other Hospitals present in the network.
 
-The transactions will be *digitally signed* by the hospital itself using[wallet](#what-is-a-wallet).
+The transactions will be *digitally signed* by the hospital itself using [wallet](#what-is-a-wallet).
 
 **Descriptions of Transactions below:**
 
 **Admit Transaction:** This type of transaction will happen when the
     patient will happen to the Hospital.The details of the patient i.e. person identity and 
     the past details will be filled (see __CONCEPTUAL_NOTES.md__) by the hospital. The transaction
-    later verified through validation script. [see Transaction Validation](#validation).
+    later verified through validation script. [see Transaction Validation](#what-is-a-transaction-validation).
 
 **Treatment Transaction:** This type of transaction will happen with the verified only with the Admit Transactions(i.e. patients are registered with the specific hospital)
 
@@ -35,7 +37,7 @@ This transaction contains the treatment details of patient it will distinguished
     discharges from the Hospital. This transaction will be validated by the transaction validation 
     script.
 
-## #[validation]:What is a Transaction Validation ##
+## What is a Transaction Validation ##
 
 Transaction validation will happen for two reasons:
 + No Fraudlent Patient ever admitted
@@ -78,7 +80,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 So basically a block in a word can be described as the medical record for the patient in a hospital.
 
-## [consensus]:What is a Consensus Protocol ##
+## What is a Consensus Protocol ##
 
 Since the decentralised network will grow bigger and bigger with more peers joins it. There should be some way through which we can give chance to each and every node to verify the transactions and record it as block.
 For these purpose, we will be using __PROOF OF WORK CONSESUS PROTOCOL__. 
@@ -121,7 +123,7 @@ In order to purpose the block any participant must have all three kinds of trans
                     |__________________________________|
 Then only he can collect them in a block and propose it.
 
-## [chain]:What is a Chain ##
+## What is a Chain ##
 
 The chain will be timestamped ledger of different patient medical record signed by different hospitals and verified by different hospital aligned by the increasing timeline according to the UNIX epochs.And all blocks are tamper-resistant and immutable,append only. This is achieved through the concept of one-way-hash function in cryptography.
 
@@ -138,7 +140,7 @@ The chain will be timestamped ledger of different patient medical record signed 
       |_______________|      |_______________|
     ----------t1---------------------t2------------------> Timeline (Unix Epoch)
 
-## [net]:What is a Network ##
+## What is a Network ##
 
 Since there are various entities need to communicate to make and verify the transactions. For these aforementioned purposes we need a network.We will be using Internet to establish communication among various entities.The kind of network topology adopted here will be peer-to-peer network.
 So any node(entity) can join or leave the network at will. See types of clients: [thick client](#what-is-thick-client) or [thin client](#what-is-thin-client)
