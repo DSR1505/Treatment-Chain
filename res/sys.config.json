@@ -1,0 +1,5 @@
+{
+    "WALLET_ADDR":"treatment_chain.wallet.addr",
+    "WALLET_SIGN":"treatment_chain.wallet.sign"
+
+}

@@ -1,0 +1,9 @@
+{
+    "abc123":{
+        "name":"XYZ Hospital",
+        "country":"India",
+        "latitude":23.34,
+        "longitude":34.23,
+        "website":"https://www.xyz.org/"
+    }
+}

@@ -1,0 +1,13 @@
+{   
+    "compilerOptions": {
+        "target": "ES5",
+        "outDir": "./generated/",
+        "rootDir": "./src/", 
+        "allowJs": true,
+        "moduleResolution": "Node",
+        "resolveJsonModule": true
+    },
+    "include": ["./src/**/*.ts"],
+    "exclude": ["./node_modules/"]
+    
+}
