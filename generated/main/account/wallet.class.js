@@ -31,8 +31,8 @@ function () {
   Wallet.prototype.storeWallet = function () {
     var preferences = new shared_preferences_1.default();
     var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
-    var addr = this.keyPair.values().next().value;
-    var sign = this.keyPair.keys().next().value;
+    var addr = this.keyPair.publicKey.toString();
+    var sign = this.keyPair.privateKey.toString();
     preferences.setPreference(config['WALLET_ADDR'], addr);
     preferences.setPreference(config['WALLET_SIGN'], sign);
   };

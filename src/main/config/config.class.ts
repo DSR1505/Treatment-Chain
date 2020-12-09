@@ -6,10 +6,10 @@ import * as fileSystem from 'fs';
 export default class Configuration {
     private readonly ENCODING: BufferEncoding = 'utf8';
     private _config: JSON;
-    public set config(c: JSON) {
+    private set config(c: JSON) {
         this._config = c;
     }
-    public get config(): JSON {
+    private get config(): JSON {
         return this._config;
     }
     private loadConfigResource(resource: RESOURCES): JSON {

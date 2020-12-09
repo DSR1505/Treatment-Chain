@@ -29,8 +29,8 @@ function () {
   HospitalController.prototype.registerHospital = function (crypto, password) {
     var _this = this;
 
-    var hospitalService = new find_hospitals_service_1.default("India");
-    this.hospital = hospitalService.findHospital(this.hospital);
+    var hospitalService = new find_hospitals_service_1.default("India"); // this.hospital = hospitalService.findHospital(this.hospital);
+
     return new Promise(function (resolve, reject) {
       if (_this.hospital.location == undefined) {
         reject("Unable to locate hospital");

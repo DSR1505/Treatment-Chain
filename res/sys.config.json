@@ -1,5 +1,13 @@
 {
-    "WALLET_ADDR":"treatment_chain.wallet.addr",
-    "WALLET_SIGN":"treatment_chain.wallet.sign"
-
+    "WALLET_ADDR":null,
+    "WALLET_SIGN":null,
+    "HOSPITAL_ENDPOINT":"https://treatmentchain-8a14.restdb.io/rest/hospital-",
+    "CITIZEN_ENDPOINT":"https://treatmentchain-8a14.restdb.io/rest/citizen-",
+    "COUNTRY":{
+        "INDIA":"india",
+        "USA":"us"
+    },
+    "ZONE_ENDPOINT":"https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0",
+    "ZONE_BEARER":"VFz00usgBIX9JKK8YVMKDv537PfsHU7i4XXYVokJ",
+    "ZONE_KEY":""
 }

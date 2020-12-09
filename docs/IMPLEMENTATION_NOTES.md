@@ -157,4 +157,4 @@ Thin-client are the clients that can only read the chain records. That will be s
 
 ## What will be incentives in the system
 
-To be Researched
+The incentives of the system will be calculated by the concept of Information Entropy(Shanon, 1948). The reciprocal of the information entropy will be calculated as the value of the data. The more recurring tx-data will have more incentive on the system. The producer of the data(the one who does transaction) and the miner(the one who verify the transactions and create the block using the Hashing Power), both will the half the value. Once the block will reach the consensus.

@@ -7,20 +7,11 @@ import GeographicLocation from "../models/location.model";
 export default class HospitalService {
     private serviceUrl: string;
     public constructor(country: string) {
-        const config = new Configuration(RESOURCES.HOSPITAL_FINDER);
+        const config = new Configuration(RESOURCES.SYSTEM_CONFIG);
         this.serviceUrl = config.getValue(country);
     }
-    public findHospital(hospital: Hospital): Hospital {
+    public findHospital(hospital: Hospital): void {
         // TODO: write logic to extract found hospital data using HTTPS request
-        https.get(this.serviceUrl, (res: IncomingMessage) => {
-            res.on("data", (chunk: any) => {
-                const data: JSON = JSON.parse(chunk);
-                if (data[hospital.id] !== undefined) {
-                    hospital.location = new GeographicLocation(data['latitude'], data['longitude']);
-                    hospital.website = data['website'];
-                }
-            });
-        })
-        return hospital;
+
     }
 }

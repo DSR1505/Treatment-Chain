@@ -9,7 +9,6 @@ var HMAC =
 function () {
   function HMAC(crypt, algo) {
     this.crypt = crypt;
-    this.algo = algo;
     this.ENCODING = 'hex';
     this.cryptoModule = crypt;
     this.algorithm = algo;

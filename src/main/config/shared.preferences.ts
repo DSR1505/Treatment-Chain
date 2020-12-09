@@ -5,4 +5,11 @@ export default class SharedPreferences {
     public getPreference(key: string): string | null {
         return localStorage.getItem(key);
     }
+    public deletePreference(key: string): boolean {
+        localStorage.removeItem(key);
+        if (this.getPreference(key) != undefined) {
+            return false;
+        }
+        return true;
+    }
 }

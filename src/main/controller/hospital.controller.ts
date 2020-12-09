@@ -12,7 +12,7 @@ export default class HospitalController {
     public constructor(hospital: Hospital) { this.hospital = hospital }
     public registerHospital(crypto: any, password: string): Promise<Wallet> {
         const hospitalService: HospitalService = new HospitalService("India");
-        this.hospital = hospitalService.findHospital(this.hospital);
+        // this.hospital = hospitalService.findHospital(this.hospital);
         return new Promise<Wallet>((resolve, reject) => {
             if (this.hospital.location == undefined) {
                 reject("Unable to locate hospital");

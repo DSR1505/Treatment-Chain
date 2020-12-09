@@ -4,7 +4,10 @@
   "description": "This is the project about using the Blockchain combined with Artifical Intelligence technology to fight the pandemic and by helping medical research institute to prepare a vaccine",
   "main": "main.js",
   "scripts": {
-    "test": "tsc && babel ./generated/ --out-dir ./generated/ && node ./generated/test/testSuite.js"
+    "pretest": "tsc && babel ./generated/ --out-dir ./generated/ ",
+    "test": "node ./generated/test/testSuite.js",
+    "prestart": "tsc && babel ./generated/ --out-dir ./generated/",
+    "start": "node  ./generated/main/bootstrapper/bootstrap.class.js"
   },
   "repository": {
     "type": "git",
@@ -36,5 +39,7 @@
     "prettier": "2.2.1",
     "typescript": "^4.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
