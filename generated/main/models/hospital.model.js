@@ -40,12 +40,12 @@ function () {
     enumerable: false,
     configurable: true
   });
-  Object.defineProperty(Hospital.prototype, "website", {
+  Object.defineProperty(Hospital.prototype, "email", {
     get: function get() {
-      return this._website;
+      return this._email;
     },
     set: function set(web) {
-      this._website = web;
+      this._email = web;
     },
     enumerable: false,
     configurable: true

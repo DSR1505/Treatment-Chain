@@ -6,11 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var readlineSync = require("readline-sync");
 
+var walletloader_class_1 = require("../account/walletloader.class");
+
 var config_class_1 = require("../config/config.class");
 
 var resource_enum_1 = require("../config/resource.enum");
 
-var shared_preferences_1 = require("../config/shared.preferences");
+var hospital_controller_1 = require("../controller/hospital.controller");
+
+var hospital_model_1 = require("../models/hospital.model");
+
+var cryptoloader_function_1 = require("../utils/cryptoloader.function");
 
 var Main =
 /** @class */
@@ -19,42 +25,73 @@ function () {
 
   Main.main = function () {
     var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
-    var preference = new shared_preferences_1.default();
     var privateKey;
     var passphrase;
     console.log("Welcome to Treatment Chain - Thick Client");
     console.log("Enter your Choice (1 to 2) to become part of system:");
-    var choice = parseInt(readlineSync.question("1.Already Registered\n2.Part of Network\n"), 10);
+    var choice = parseInt(readlineSync.question("1.Already Registered\n2.Register in  Network\nEnter Choice:"), 10);
 
     if (choice === 1) {
-      console.log('Searching your wallet in the system'); // Not Found
+      console.log('Searching your wallet in the system');
 
-      if (!preference.getPreference(config['WALLET_SIGN']) && !preference.getPreference(config['WALLET_ADDR'])) {
-        console.log('Not Found in the system!'); // Try to enter wallet manually 
-      } else {// Found the keys print and do the next step
-        }
-    } else if (choice === 2) {// Register into the network freshly
+      try {
+        var wallet = walletloader_class_1.default.loadWallet(Main.cryptoModule);
+        console.log("*** WALLET FOUND ***");
+        console.log("Your Signer:\n", wallet.privateKey.toString());
+        console.log("Your Address:\n", wallet.publicKey.toString()); // contact any peer 
+        // peer found
+        // sending address
+        // verifying address
+        // address verified
+        // updating peers list
+        // downloading blocks
+        // updating progress
+        // Records are up to date.
+        // show rest features.
+      } catch (e) {
+        console.log('Wallet not found!\nTry to enter the keys manually\n');
+      }
+
+      var signerPath = readlineSync.question('Enter Signer Path:');
+      var passphrase_1 = readlineSync.question('Enter password:', {
+        hideEchoBack: true
+      });
+      var address = walletloader_class_1.default.getAddress(Main.cryptoModule, signerPath);
+      console.log('Your public key is ', address); // contact any peer 
+      // peer found
+      // sending address
+      // verifying address
+      // address verified
+      // updating peers list
+      // downloading blocks
+      // updating progress
+      // Records are up to date.
+      // show rest features
+    } else if (choice === 2) {
+      // Register into the network freshly
+      this.register();
     }
-    /*
-    
-    get the generated public key
-     search through tx-mempool by sending
-    request to the longest running node
-    in the network.
-    
-    If node finds the the given public key signed or made
-    the tx
-    
-    Download the blocks it is behind.
-    
-    Else if choosen 2
-     Follow the registration process
-     If process follows happy path.
-     Download the blocks.
-    */
-
   };
 
+  Main.register = function () {
+    var id = readlineSync.question("Enter the id of the hospital:");
+    var name = readlineSync.question("Enter the name of the hospital:");
+    var country = readlineSync.question("Enter the native country of hospital(IN UPPERCASE):");
+    var passphrase = readlineSync.question("Enter the passphrase for hospital:");
+    var hospital = new hospital_model_1.default(name, country, id);
+    var hospitalController = new hospital_controller_1.default(hospital);
+    hospitalController.registerHospital().then(function (result) {
+      console.log(result); // const wallet = new Wallet(this.cryptoModule, passphrase);
+      // const keys = wallet.getKeyPair();
+      // console.log(keys.privateKey);
+      // console.log(keys.publicKey);
+      // wallet.storeWallet();
+    }).catch(function (err) {
+      console.error(err);
+    });
+  };
+
+  Main.cryptoModule = cryptoloader_function_1.default() || require('crypto');
   return Main;
 }();
 

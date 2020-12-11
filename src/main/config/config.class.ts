@@ -12,15 +12,15 @@ export default class Configuration {
     private get config(): JSON {
         return this._config;
     }
+    public constructor(resource: RESOURCES) {
+        this.config = this.loadConfigResource(resource);
+    }
     private loadConfigResource(resource: RESOURCES): JSON {
         const temp = fileSystem.readFileSync(resource, { encoding: this.ENCODING });
         return JSON.parse(String(temp));
     }
     private commitResource(resource: RESOURCES): void {
         fileSystem.writeFileSync(resource, JSON.stringify(this.config));
-    }
-    public constructor(resource: RESOURCES) {
-        this.config = this.loadConfigResource(resource);
     }
     public getValue(key: string): string {
         return this.config[key];
