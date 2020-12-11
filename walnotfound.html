@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Flappy Dialog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./walnotfound.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class='panel' id='js-panel'>
+  <div class='panel__content'>
+    <h3>Treatment Chain-Thick Client</h3>
+    <h2>Alas,Wallet Not found</h2>
+    
+  </div>
+  <div class='panel__flaps'>
+    <div class='flap outer flap--left'></div>
+    <a class='flap flap__btn' href='#'>Enter Manually</a>
+    <a class='flap flap__btn' href='#'>SignUp</a>
+    <div class='flap outer flap--right'></div>
+  </div>
+</div>
+<div class="loader-wrapper">
+  <div class="wrapper">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+      <span>Please Wait!</span>
+      <p>Looking for the Wallet</p>
+  </div>
+  </div>
+<!-- partial -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./walnotfound.js"></script>
+
+<script>
+  setTimeout(function(){
+  $('.loader-wrapper').fadeOut();
+  },1500);
+</script>
+
+
+
+
+
+
+  
+
+</body>
+</html>
