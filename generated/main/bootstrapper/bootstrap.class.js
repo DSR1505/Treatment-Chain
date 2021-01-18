@@ -6,13 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var readlineSync = require("readline-sync");
 
+var wallet_class_1 = require("../account/wallet.class");
+
 var walletloader_class_1 = require("../account/walletloader.class");
 
 var config_class_1 = require("../config/config.class");
 
 var resource_enum_1 = require("../config/resource.enum");
 
-var hospital_controller_1 = require("../controller/hospital.controller");
+var hospital_controller_1 = require("../controllers/hospital.controller");
 
 var hospital_model_1 = require("../models/hospital.model");
 
@@ -74,18 +76,27 @@ function () {
   };
 
   Main.register = function () {
+    var _this = this;
+
     var id = readlineSync.question("Enter the id of the hospital:");
-    var name = readlineSync.question("Enter the name of the hospital:");
     var country = readlineSync.question("Enter the native country of hospital(IN UPPERCASE):");
-    var passphrase = readlineSync.question("Enter the passphrase for hospital:");
-    var hospital = new hospital_model_1.default(name, country, id);
+    var passphrase = readlineSync.question("Enter the passphrase:", {
+      'hideEchoBack': true
+    });
+    var hospital = new hospital_model_1.default(id, country);
     var hospitalController = new hospital_controller_1.default(hospital);
     hospitalController.registerHospital().then(function (result) {
-      console.log(result); // const wallet = new Wallet(this.cryptoModule, passphrase);
-      // const keys = wallet.getKeyPair();
-      // console.log(keys.privateKey);
-      // console.log(keys.publicKey);
-      // wallet.storeWallet();
+      console.log(result);
+      var wallet = new wallet_class_1.default(_this.cryptoModule, passphrase);
+      var keys = wallet.getKeyPair();
+      console.log('*** WALLET GENERATED ***');
+      console.log(keys.privateKey);
+      console.log(keys.publicKey);
+      console.log('*** END ***');
+      console.log('Storing wallet to local disc.');
+      wallet.storeWallet();
+      console.log('Wallet Stored!');
+      console.log("Congratulations! " + result.name + " is registered!");
     }).catch(function (err) {
       console.error(err);
     });

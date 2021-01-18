@@ -7,10 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 var Hospital =
 /** @class */
 function () {
-  function Hospital(nm, cntry, i) {
-    this.name = nm;
-    this.country = cntry;
-    this._id = i;
+  function Hospital(id, country) {
+    this._country = country;
+    this._id = id;
   }
 
   Object.defineProperty(Hospital.prototype, "id", {
@@ -53,9 +52,6 @@ function () {
   Object.defineProperty(Hospital.prototype, "country", {
     get: function get() {
       return this._country;
-    },
-    set: function set(ctry) {
-      this._country = ctry;
     },
     enumerable: false,
     configurable: true

@@ -189,11 +189,16 @@ function () {
             /*return*/
             , new Promise(function (resolve, reject) {
               var response = JSON.parse(result);
-              console.log('Hospital Controller:', response[0]);
               _this.hospital.name = response[0]['name'];
               _this.hospital.location = new location_model_1.default(response[0]['latitude'], response[0]['longitude']);
               _this.hospital.email = response[0]['email'];
-              resolve(_this.hospital);
+
+              if (_this.hospital.name === undefined) {
+                resolve(null);
+              } else {
+                resolve(_this.hospital);
+              }
+
               reject('Not Found');
             })];
         }

@@ -10,8 +10,6 @@ var resource_enum_1 = require("../config/resource.enum");
 
 var https = require("https");
 
-var location_model_1 = require("../models/location.model");
-
 var HospitalService =
 /** @class */
 function () {
@@ -20,33 +18,28 @@ function () {
     this.serviceUrl = config.getValue("HOSPITAL_ENDPOINT") + config.getValue("COUNTRIES")[country];
   }
 
-  HospitalService.prototype.findHospital = function (hospital) {
+  HospitalService.prototype.findHospital = function (id) {
     return new Promise(function (resolve, reject) {
       var options = {
         hostname: "treatmentchain-8a14.restdb.io",
-        path: "/rest/hospital-india?identification_number=" + hospital.id,
+        path: "/rest/hospital-india?q={\"identification_number\":\"" + id + "\"}",
         headers: {
-          'x-apikey': 'cf0ccee45de3036fdb005d2048b8ea4b21203',
-          'cache-control': 'no-cache',
-          'content-type': 'application/json'
-        },
-        method: 'GET'
+          'x-apikey': 'cf0ccee45de3036fdb005d2048b8ea4b21203'
+        }
       };
       var request = https.request(options, function (res) {
-        console.log(res.statusCode);
-        var found;
+        var temp = '';
         res.on('data', function (chunk) {
-          found = chunk.toString();
+          temp += chunk;
         });
-        res.on('error', function (err) {
-          reject(err);
-        });
-        res.on('close', function () {
-          hospital.location = new location_model_1.default(found['latitude'], found['longitude']);
-          hospital.email = found['email'];
-          resolve(hospital);
+        res.on('end', function () {
+          resolve(temp);
         });
       });
+      request.on('error', function (err) {
+        reject(err);
+      });
+      request.end();
     });
   };
 

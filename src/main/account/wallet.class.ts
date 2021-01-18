@@ -33,7 +33,7 @@ export default class Wallet {
             temp = filesytem.writeFileSync(path + config.getValue('WALLET_SIGN'), sign, { flag: 'wx' });
             temp = filesytem.writeFileSync(path + config.getValue('WALLET_ADDR'), addr, { flag: 'wx' });
         } catch (e) {
-            console.error(e);
+            throw e;
         }
     }
 

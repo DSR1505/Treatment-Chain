@@ -14,12 +14,10 @@ function () {
   function HospitalServiceTest() {}
 
   HospitalServiceTest.testModule = function () {
-    var hospital = new hospital_model_1.default('NAME', 'INDIA', 'abc123');
+    var hospital = new hospital_model_1.default('abc123', 'INDIA');
     var module = new find_hospitals_service_1.default(hospital.country);
-    module.findHospital(hospital).then(function (res) {
-      console.log(res);
-    }).catch(function (err) {
-      console.error(err);
+    module.findHospital(hospital.id).then(function (result) {
+      console.log(JSON.parse(result));
     });
   };
 

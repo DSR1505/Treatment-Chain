@@ -1,13 +1,17 @@
-export default class Patient {
-    private _name: string;
-    private
-    public set name(n: string) {
-        this._name = n;
-    }
-    public get name(): string {
-        return this._name;
-    }
-    private age: number;
-    public constructor(readonly id: string, readonly country: string) { }
+import { IDisease } from "./disease.interface";
+import Person from "./person.model";
 
+export default class Patient extends Person {
+    private _disease: IDisease;
+    public get disease(): IDisease {
+        return this._disease;
+    }
+    public constructor(readonly id: string, readonly country: string, disease: IDisease) {
+        super(id, country);
+        this._disease = disease;
+    }
+
+    public toString(): string {
+        return JSON.stringify(this);
+    }
 }

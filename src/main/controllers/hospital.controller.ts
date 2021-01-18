@@ -1,8 +1,6 @@
-import { rejects } from 'assert';
-import Wallet from '../account/wallet.class';
 import Hospital from '../models/hospital.model';
+import GeographicLocation from '../models/location.model';
 import HospitalService from '../services/find-hospitals.service';
-import IKeyPair from '../utils/keypair.interface';
 export default class HospitalController {
     private _hospital: Hospital;
     public set hospital(h: Hospital) {
@@ -15,14 +13,18 @@ export default class HospitalController {
 
     public async registerHospital(): Promise<Hospital> {
         const hospitalService: HospitalService = new HospitalService(this.hospital.country);
-        const temp = await hospitalService.findHospital(this.hospital);
-        console.log(temp);
+        const result = await hospitalService.findHospital(this.hospital.id);
         return new Promise<Hospital>((resolve, reject) => {
-            if (temp.email !== undefined) {
-                resolve(temp);
+            const response = JSON.parse(result);
+            this.hospital.name = response[0]['name'];
+            this.hospital.location = new GeographicLocation(response[0]['latitude'], response[0]['longitude']);
+            this.hospital.email = response[0]['email']
+            if (this.hospital.name === undefined) {
+                resolve(null);
+            } else {
+                resolve(this.hospital);
             }
             reject('Not Found');
         });
-
     }
 }

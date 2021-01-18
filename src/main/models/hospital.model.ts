@@ -26,16 +26,12 @@ export default class Hospital {
     public get email(): string {
         return this._email;
     }
-    public set country(ctry: string) {
-        this._country = ctry;
-    }
     public get country(): string {
         return this._country;
     }
-    public constructor(nm: string, cntry: string, i: string) {
-        this.name = nm;
-        this.country = cntry;
-        this._id = i;
+    public constructor(id: string, country: string) {
+        this._country = country;
+        this._id = id;
     }
     public toString() {
         return JSON.stringify(this);
