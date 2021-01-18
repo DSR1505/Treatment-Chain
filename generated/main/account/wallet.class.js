@@ -8,19 +8,20 @@ var config_class_1 = require("../config/config.class");
 
 var resource_enum_1 = require("../config/resource.enum");
 
-var shared_preferences_1 = require("../config/shared.preferences");
-
 var pubkeycrypt_enum_1 = require("../utils/pubkeycrypt.enum");
 
 var pubkeycryptkeygen_class_1 = require("../utils/pubkeycryptkeygen.class");
+
+var filesytem = require("fs");
+
+var os = require("os");
 
 var Wallet =
 /** @class */
 function () {
   function Wallet(crypto, passphrase) {
     this.crypto = crypto;
-    this.passphrase = passphrase;
-    this.keyPairGen = new pubkeycryptkeygen_class_1.default(crypto, pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.EC, passphrase);
+    this.keyPairGen = new pubkeycryptkeygen_class_1.default(crypto, pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.RSA, passphrase);
   }
 
   Wallet.prototype.getKeyPair = function () {
@@ -29,12 +30,33 @@ function () {
   };
 
   Wallet.prototype.storeWallet = function () {
-    var preferences = new shared_preferences_1.default();
     var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
-    var addr = this.keyPair.values().next().value;
-    var sign = this.keyPair.keys().next().value;
-    preferences.setPreference(config['WALLET_ADDR'], addr);
-    preferences.setPreference(config['WALLET_SIGN'], sign);
+    var addr = this.keyPair.publicKey.toString();
+    var sign = this.keyPair.privateKey.toString();
+    var path, temp;
+
+    if (process.platform === 'linux') {
+      path = '/home/' + os.userInfo()['username'] + config.getValue('PLATFORM_LINUX');
+    } else if (process.platform === 'win32') {
+      path = config.getValue('PLATFORM_WIN32');
+    }
+
+    if (!filesytem.existsSync(path)) {
+      filesytem.mkdirSync(path, {
+        recursive: true
+      });
+    }
+
+    try {
+      temp = filesytem.writeFileSync(path + config.getValue('WALLET_SIGN'), sign, {
+        flag: 'wx'
+      });
+      temp = filesytem.writeFileSync(path + config.getValue('WALLET_ADDR'), addr, {
+        flag: 'wx'
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return Wallet;

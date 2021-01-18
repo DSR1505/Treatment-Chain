@@ -1,5 +1,15 @@
 {
-    "WALLET_ADDR":"treatment_chain.wallet.addr",
-    "WALLET_SIGN":"treatment_chain.wallet.sign"
-
+    "PLATFORM_LINUX":"/treatment_chain/wallet/",
+    "PLATFORM_WIN32":"C:\\treatment_chain\\wallet\\",
+    "WALLET_SIGN":"treatment_chain-wallet-signer.pem",
+    "WALLET_ADDR":"treatment_chain-wallet-address.pem",
+    "HOSPITAL_ENDPOINT":"treatmentchain-8a14.restdb.io/rest/hospital-",
+    "CITIZEN_ENDPOINT":"treatmentchain-8a14.restdb.io/rest/citizen-",
+    "COUNTRIES":{
+        "INDIA":"india",
+        "USA":"us"
+    },
+    "ZONE_ENDPOINT":"api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0",
+    "ZONE_BEARER":"VFz00usgBIX9JKK8YVMKDv537PfsHU7i4XXYVokJ",
+    "ZONE_KEY":"c8997f5d103b7089aaa2b377826d799561896"
 }

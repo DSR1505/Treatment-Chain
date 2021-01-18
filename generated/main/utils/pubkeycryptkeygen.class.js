@@ -6,18 +6,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var pubkeycrypt_enum_1 = require("./pubkeycrypt.enum");
 
-var hash_enum_1 = require("./hash.enum");
-
-var hash_class_1 = require("./hash.class");
-
 var AsymmetricKeysGenerator =
 /** @class */
 function () {
   function AsymmetricKeysGenerator(crytpo, algo, k) {
+    this.format = 'pem';
     this._crytoModule = crytpo;
     this.algorithm = algo;
-    var hash = new hash_class_1.default(this.cryptoModule, hash_enum_1.HASH_ALGORITHM.SHA384);
-    this.key = hash.getMessageDigest(k);
+    this.key = k;
   }
 
   Object.defineProperty(AsymmetricKeysGenerator.prototype, "algorithm", {
@@ -49,39 +45,62 @@ function () {
   });
 
   AsymmetricKeysGenerator.prototype.getKeyPair = function () {
-    var publicKey = this.cryptoModule.createPublicKey(this.key);
-    var privateKey = this.cryptoModule.createPrivateKey(this.key);
-
-    if (publicKey.type !== 'public' || privateKey.type !== 'private') {
-      throw new Error('Keypair haven\'t generated Successfully!');
-    }
-
     var keyPair;
-    var pubk, prk;
 
-    if (this.algorithm === pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.RSA || this.algorithm === pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.RSA_PSS) {
-      pubk = publicKey.export({
-        format: "pem",
-        type: 'pkcs1'
+    if (this.algorithm == pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.RSA) {
+      keyPair = this.cryptoModule.generateKeyPairSync(this.algorithm, {
+        modulusLength: 2048,
+        publicKeyEncoding: {
+          type: 'spki',
+          format: this.format
+        },
+        privateKeyEncoding: {
+          type: 'pkcs8',
+          format: this.format,
+          cipher: 'aes-256-cbc',
+          passphrase: this.key
+        }
       });
-      prk = privateKey.export({
-        format: 'pem',
-        type: 'pkcs1',
-        cipher: this.key
+    } else if (this.algorithm == pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.EC || this.algorithm == pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.ED25519 || this.algorithm == pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.ED448) {
+      keyPair = this.cryptoModule.generateKeyPairSync(this.algorithm, {
+        namedCurve: 'secp384r1',
+        publicKeyEncoding: {
+          type: 'spki',
+          format: this.format
+        },
+        privateKeyEncoding: {
+          type: 'sec1',
+          format: this.format
+        }
       });
-    } else {
-      pubk = publicKey.export({
-        format: 'pem',
-        type: 'spki'
+    } else if (this.algorithm == pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.DH) {
+      keyPair = this.cryptoModule.generateKeyPairSync(this.algorithm, {
+        prime: Buffer.alloc(64),
+        primeLength: 64,
+        generator: 79,
+        groupName: 'modp17',
+        publicKeyEncoding: {
+          format: this.format
+        },
+        privateKeyEncoding: {
+          format: this.format,
+          passphrase: this.key
+        }
       });
-      prk = privateKey.export({
-        format: 'pem',
-        type: 'pkcs8',
-        cipher: this.key
+    } else if (this.algorithm == pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.DSA) {
+      keyPair = this.cryptoModule.generateKeyPairSync(this.algorithm, {
+        modulusLength: 4096,
+        divisorLength: 64,
+        publicKeyEncoding: {
+          format: this.format
+        },
+        privateKeyEncoding: {
+          format: this.format,
+          passphrase: this.key
+        }
       });
     }
 
-    keyPair.set(prk, pubk);
     return keyPair;
   };
 

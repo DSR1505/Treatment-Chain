@@ -1,6 +1,6 @@
-export enum HASH_ALGORITHM{
-    SHA256 = 'SHA-256',
-    SHA384 = 'SHA-384',
-    SHA512 = 'SHA-512'    
+export enum HASH_ALGORITHM {
+    SHA256 = 'sha256',
+    SHA384 = 'sha384',
+    SHA512 = 'sha512'
 }
 

@@ -17,6 +17,16 @@ function () {
     return localStorage.getItem(key);
   };
 
+  SharedPreferences.prototype.deletePreference = function (key) {
+    localStorage.removeItem(key);
+
+    if (this.getPreference(key) != undefined) {
+      return false;
+    }
+
+    return true;
+  };
+
   return SharedPreferences;
 }();
 

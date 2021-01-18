@@ -7,10 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 var Hospital =
 /** @class */
 function () {
-  function Hospital(nm, cntry, i) {
-    this.name = nm;
-    this.country = cntry;
-    this._id = i;
+  function Hospital(id, country) {
+    this._country = country;
+    this._id = id;
   }
 
   Object.defineProperty(Hospital.prototype, "id", {
@@ -40,12 +39,12 @@ function () {
     enumerable: false,
     configurable: true
   });
-  Object.defineProperty(Hospital.prototype, "website", {
+  Object.defineProperty(Hospital.prototype, "email", {
     get: function get() {
-      return this._website;
+      return this._email;
     },
     set: function set(web) {
-      this._website = web;
+      this._email = web;
     },
     enumerable: false,
     configurable: true
@@ -53,9 +52,6 @@ function () {
   Object.defineProperty(Hospital.prototype, "country", {
     get: function get() {
       return this._country;
-    },
-    set: function set(ctry) {
-      this._country = ctry;
     },
     enumerable: false,
     configurable: true

@@ -4,7 +4,7 @@ export default class Hospital {
     private _country: string;
     private _id: string;
     private _location: GeographicLocation;
-    private _website: string;
+    private _email: string;
     public get id(): string {
         return this._id;
     }
@@ -20,22 +20,18 @@ export default class Hospital {
     public get name(): string {
         return this._name;
     }
-    public set website(web: string) {
-        this._website = web;
+    public set email(web: string) {
+        this._email = web;
     }
-    public get website(): string {
-        return this._website;
-    }
-    public set country(ctry: string) {
-        this._country = ctry;
+    public get email(): string {
+        return this._email;
     }
     public get country(): string {
         return this._country;
     }
-    public constructor(nm: string, cntry: string, i: string) {
-        this.name = nm;
-        this.country = cntry;
-        this._id = i;
+    public constructor(id: string, country: string) {
+        this._country = country;
+        this._id = id;
     }
     public toString() {
         return JSON.stringify(this);

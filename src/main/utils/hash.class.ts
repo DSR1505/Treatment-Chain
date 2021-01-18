@@ -23,7 +23,7 @@ export default class OneWayHash {
     }
     public getMessageDigest(message: string): Buffer | string {
         this.hashObject.update(message);
-        return this.hashObject.digest(this.INPUT_ENCODING);
+        return this.hashObject.digest(this.INPUT_ENCODING) as string;
     }
 
 }

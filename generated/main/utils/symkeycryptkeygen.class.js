@@ -11,28 +11,19 @@ var hash_class_1 = require("./hash.class");
 var SymmetricKeyGenerator =
 /** @class */
 function () {
-  function SymmetricKeyGenerator(cryptoObject, k) {
+  function SymmetricKeyGenerator(cryptoObject, key) {
+    this.SALT = 'trea1ment_chain';
+    this.KEY_LENGTH = 64;
+    this.ENCODING = 'hex';
     this.crypto = cryptoObject;
-    var hash = new hash_class_1.default(this.crypto, hash_enum_1.HASH_ALGORITHM.SHA384);
-    this.key = hash.getMessageDigest(k);
+    this.hash = new hash_class_1.default(cryptoObject, hash_enum_1.HASH_ALGORITHM.SHA384).getMessageDigest(key);
   }
 
-  Object.defineProperty(SymmetricKeyGenerator.prototype, "key", {
-    get: function get() {
-      return this._key;
-    },
-    set: function set(k) {
-      this._key = k;
-    },
-    enumerable: false,
-    configurable: true
-  });
-
   SymmetricKeyGenerator.prototype.getSymmetricKey = function () {
-    return this.crypto.createSecret(this.key);
+    var symmetricKey = this.crypto.scryptSync(this.hash, this.SALT, this.KEY_LENGTH);
+    return symmetricKey.toString(this.ENCODING);
   };
 
-  SymmetricKeyGenerator.ENCODING = 'hex';
   return SymmetricKeyGenerator;
 }();
 
