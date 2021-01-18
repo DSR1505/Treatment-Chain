@@ -55,7 +55,7 @@ function () {
         flag: 'wx'
       });
     } catch (e) {
-      console.error(e);
+      throw e;
     }
   };
 

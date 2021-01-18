@@ -94,13 +94,36 @@ function () {
       console.log(keys.publicKey);
       console.log('*** END ***');
       console.log('Storing wallet to local disc.');
-      wallet.storeWallet();
-      console.log('Wallet Stored!');
-      console.log("Congratulations! " + result.name + " is registered!");
+
+      try {
+        wallet.storeWallet();
+        console.log('Wallet Stored!');
+        console.log("Congratulations! " + result.name + " is registered!");
+      } catch (e) {
+        console.log('Wallet already exist!');
+      }
     }).catch(function (err) {
       console.error(err);
     });
   };
+
+  Main.prototype.allFeatures = function () {
+    var choice;
+
+    do {
+      console.log('1.Register the Patient');
+      console.log('2.Treat the patient');
+      console.log('3.Discharge the patient.');
+      console.log('4.Verify other Hospital\'s Electronic Medical Record Slice');
+      console.log('5.Create the Electronic Medical Record.');
+      console.log('6.Calculate your incentives.');
+      console.log('7. View all Timestamped Electronic Medical Records');
+      console.log('8.View all Electronic Medical Record Slices');
+      console.log('9.Exit');
+    } while (choice !== 9);
+  };
+
+  Main.prototype.registerPatient = function () {};
 
   Main.cryptoModule = cryptoloader_function_1.default() || require('crypto');
   return Main;
