@@ -24,11 +24,12 @@ function () {
     this.keyPairGen = new pubkeycryptkeygen_class_1.default(crypto, pubkeycrypt_enum_1.PUBKEYCRYPT_ALGORITHM.RSA, passphrase);
   }
 
+  // getKeyPair function
   Wallet.prototype.getKeyPair = function () {
     this.keyPair = this.keyPairGen.getKeyPair();
     return this.keyPair;
   };
-
+  // storingWallet to store
   Wallet.prototype.storeWallet = function () {
     var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
     var addr = this.keyPair.publicKey.toString();
