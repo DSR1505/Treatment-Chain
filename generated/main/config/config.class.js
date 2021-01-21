@@ -4,12 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var fileSystem = require("fs");
+var fileSystem = require("fs"); // for handling file system tasks.
+
 /**
- * It will read files and return the value.
+ * Configuration Class to load.
+ * This file basically Created Configuration Object and defined
  */
-
-
 var Configuration =
 /** @class */
 function () {
@@ -29,13 +29,15 @@ function () {
     configurable: true
   });
 
+  // Loading the configuration Resource file from the '/res' path.
   Configuration.prototype.loadConfigResource = function (resource) {
     var temp = fileSystem.readFileSync(resource, {
-      encoding: this.ENCODING
+      encoding: this.ENCODING // grabbing the encoding.
     });
-    return JSON.parse(String(temp));
+    return JSON.parse(String(temp)); // parsing into json output
   };
 
+  // Committing or writing the configuration inside file
   Configuration.prototype.commitResource = function (resource) {
     fileSystem.writeFileSync(resource, JSON.stringify(this.config));
   };
