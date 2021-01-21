@@ -7,7 +7,7 @@
     "pretest": "tsc && babel ./generated/ --out-dir ./generated/ ",
     "test": "node ./generated/test/testSuite.js",
     "prestart": "tsc && babel ./generated/ --out-dir ./generated/",
-    "start": "node  ./generated/main/bootstrapper/bootstrap.class.js"
+    "start": "PORT=5353 node  ./generated/main/bootstrapper/bootstrap.class.js"
   },
   "repository": {
     "type": "git",
