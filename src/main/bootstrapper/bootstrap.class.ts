@@ -6,16 +6,21 @@ import { RESOURCES } from '../config/resource.enum';
 import HospitalController from '../controllers/hospital.controller';
 import Hospital from '../models/hospital.model';
 import checkCryptoModuleSupport from '../utils/cryptoloader.function';
+
+
 export default class Main {
+    // loads the crypto module
     private static readonly cryptoModule = checkCryptoModuleSupport() || require('crypto');
+    // probably the main method
     public static main(): void {
-        const config = new Configuration(RESOURCES.SYSTEM_CONFIG);
-        let privateKey: string;
-        let passphrase: string;
+        const config = new Configuration(RESOURCES.SYSTEM_CONFIG); // loading the configuration from the RESOURCES
+        let privateKey: string; // PRIVATE KEY
+        let passphrase: string; // PASSPHRASE
         console.log("Welcome to Treatment Chain - Thick Client");
         console.log("Enter your Choice (1 to 2) to become part of system:");
         let choice: number = parseInt(readlineSync.question("1.Already Registered\n2.Register in  Network\nEnter Choice:"), 10);
         if (choice === 1) {
+            // The condition here is you are already registered and you already have a wallet in your OS.
             console.log('Searching your wallet in the system');
             try {
                 const wallet = WalletLoader.loadWallet(Main.cryptoModule);
