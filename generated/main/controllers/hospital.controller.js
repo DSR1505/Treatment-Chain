@@ -168,7 +168,7 @@ function () {
     enumerable: false,
     configurable: true
   });
-
+  // Register Hospital Function
   HospitalController.prototype.registerHospital = function () {
     return __awaiter(this, void 0, void 0, function () {
       var hospitalService, result;

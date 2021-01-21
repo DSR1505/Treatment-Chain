@@ -14,7 +14,7 @@ var WalletLoader =
 /** @class */
 function () {
   function WalletLoader() {}
-
+  // loadWallet function to retrieve existing wallet from the user's system. Probably Redis once again.
   WalletLoader.loadWallet = function (crypto) {
     var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
     var temp;
