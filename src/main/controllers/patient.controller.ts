@@ -19,7 +19,7 @@ export default class PatientController {
         this.findPatient().then((patient) => {
             if (patient && patient.disease.isDiagnosed()) {
                 // create the transaction with the data;
-                
+
             }
         })
         return false;

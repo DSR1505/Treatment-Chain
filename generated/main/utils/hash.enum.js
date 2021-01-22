@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.HASH_ALGORITHM = void 0;
+/**
+ * Stores the HASH names in enum file
+ */
+
 var HASH_ALGORITHM;
 
 (function (HASH_ALGORITHM) {
