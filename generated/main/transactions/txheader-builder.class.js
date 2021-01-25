@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var transactionHeader =
+var TransactionHeaderBuilder =
 /** @class */
 function () {
-  function transactionHeader() {
+  function TransactionHeaderBuilder() {
     this.timestamp = new Date().getTime();
   }
 
-  return transactionHeader;
+  return TransactionHeaderBuilder;
 }();
 
-exports.default = transactionHeader;
+exports.default = TransactionHeaderBuilder;

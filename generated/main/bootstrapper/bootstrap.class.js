@@ -42,10 +42,10 @@ function () {
       console.log('Searching your wallet in the system');
 
       try {
-        var wallet = walletloader_class_1.default.loadWallet(Main.cryptoModule);
+        var wallet = walletloader_class_1.default.loadWallet();
         console.log("*** WALLET FOUND ***");
-        console.log("Your Signer:\n", wallet.privateKey.toString());
-        console.log("Your Address:\n", wallet.publicKey.toString()); // contact any peer 
+        console.log("Your Signer:\n", wallet.privateKey);
+        console.log("Your Address:\n", wallet.publicKey); // contact any peer 
         // peer found
         // sending address
         // verifying address
@@ -63,7 +63,7 @@ function () {
       var passphrase_1 = readlineSync.question('Enter password:', {
         hideEchoBack: true
       });
-      var address = walletloader_class_1.default.getAddress(Main.cryptoModule, signerPath);
+      var address = walletloader_class_1.default.getAddress(signerPath);
       console.log('Your public key is ', address); // contact any peer 
       // peer found
       // sending address

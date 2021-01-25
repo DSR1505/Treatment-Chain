@@ -13,8 +13,6 @@ var pubkeycrypt_enum_1 = require("../utils/pubkeycrypt.enum");
 var pubkeycryptkeygen_class_1 = require("../utils/pubkeycryptkeygen.class");
 
 var filesytem = require("fs");
-
-var os = require("os");
 /**
  * The ACTUAL WALLET CLASS
  */
@@ -59,7 +57,7 @@ function () {
     if (process.platform === 'linux') {
       // checking for the platform
       // if the OS is Linux then wallet path is in home directory
-      path = '/home/' + os.userInfo()['username'] + config.getValue('PLATFORM_LINUX');
+      path = config.getValue('PLATFORM_LINUX');
     } else if (process.platform === 'win32') {
       // this is for windows.
       // path is not clear

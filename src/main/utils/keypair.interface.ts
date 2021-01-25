@@ -1,6 +1,5 @@
-import { KeyObject } from "crypto";
-
+import { KeyObject } from 'crypto';
 export default interface IKeyPair {
-    publicKey: KeyObject;
-    privateKey: KeyObject;
+    publicKey: KeyObject | string;
+    privateKey: KeyObject | string;
 }

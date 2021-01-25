@@ -40,7 +40,7 @@ export default class Wallet {
      * Storing wallet on the user's system
      */
     public storeWallet(): void {
-        
+
         // this configuration specifically changes for the type of OS (Windows, Linux)
         const config = new Configuration(RESOURCES.SYSTEM_CONFIG);
 
@@ -54,7 +54,7 @@ export default class Wallet {
 
         if (process.platform === 'linux') { // checking for the platform
             // if the OS is Linux then wallet path is in home directory
-            path = '/home/' + os.userInfo()['username'] + config.getValue('PLATFORM_LINUX');
+            path = config.getValue('PLATFORM_LINUX');
         } else if (process.platform === 'win32') {
             // this is for windows.
             // path is not clear
