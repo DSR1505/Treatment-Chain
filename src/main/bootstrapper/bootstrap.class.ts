@@ -39,22 +39,21 @@ export default class Main {
                 // show rest features.
             } catch (e) {
                 console.log('Wallet not found!\nTry to enter the keys manually\n');
+                const signerPath = readlineSync.question('Enter Signer Path:');
+                const passphrase = readlineSync.question('Enter password:', { hideEchoBack: true });
+                const address = WalletLoader.getAddress(signerPath);
+                console.log('Your public key is ', address);
+                // contact any peer 
+                // peer found
+                // sending address
+                // verifying address
+                // address verified
+                // updating peers list
+                // downloading blocks
+                // updating progress
+                // Records are up to date.
+                // show rest features
             }
-
-            const signerPath = readlineSync.question('Enter Signer Path:');
-            const passphrase = readlineSync.question('Enter password:', { hideEchoBack: true });
-            const address = WalletLoader.getAddress(signerPath);
-            console.log('Your public key is ', address);
-            // contact any peer 
-            // peer found
-            // sending address
-            // verifying address
-            // address verified
-            // updating peers list
-            // downloading blocks
-            // updating progress
-            // Records are up to date.
-            // show rest features
         } else if (choice === 2) {
             // Register into the network freshly
             this.register();
