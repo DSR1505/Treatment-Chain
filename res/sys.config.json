@@ -1,5 +1,5 @@
 {
-    "PLATFORM_LINUX":"/home/treatment_chain/wallet/",
+    "PLATFORM_LINUX":"/treatment_chain/wallet/",
     "PLATFORM_WIN32":"C:\\treatment_chain\\wallet\\",
     "WALLET_SIGN":"treatment_chain-wallet-signer.pem",
     "WALLET_ADDR":"treatment_chain-wallet-address.pem",

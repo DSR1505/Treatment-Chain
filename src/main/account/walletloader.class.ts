@@ -17,11 +17,17 @@ export default class WalletLoader {
     public static loadWallet(): IKeyPair {
         // configuration changes according the platform (Linux, Windows)
         const config = new Configuration(RESOURCES.SYSTEM_CONFIG);
+
+        // getting the current user
+        const CURRENT_USER = require('os').userInfo().username;
+        
+
         let path: string = undefined; // Location of wallet(directory)
         let wallet: IKeyPair = { privateKey: null, publicKey: null }; // Keypairs stored in wallet.
         // Identification of the platform. Updating path accordingly.
         if (process.platform == 'linux') {
             path = config.getValue('PLATFORM_LINUX');
+            path = '/home/' + CURRENT_USER + path;
 
         } else if (process.platform == 'win32') {
             path = config.getValue('PLATFORM_WIN32');

@@ -57,23 +57,22 @@ function () {
         // show rest features.
       } catch (e) {
         console.log('Wallet not found!\nTry to enter the keys manually\n');
+        var signerPath = readlineSync.question('Enter Signer Path:');
+        var passphrase_1 = readlineSync.question('Enter password:', {
+          hideEchoBack: true
+        });
+        var address = walletloader_class_1.default.getAddress(signerPath);
+        console.log('Your public key is ', address); // contact any peer 
+        // peer found
+        // sending address
+        // verifying address
+        // address verified
+        // updating peers list
+        // downloading blocks
+        // updating progress
+        // Records are up to date.
+        // show rest features
       }
-
-      var signerPath = readlineSync.question('Enter Signer Path:');
-      var passphrase_1 = readlineSync.question('Enter password:', {
-        hideEchoBack: true
-      });
-      var address = walletloader_class_1.default.getAddress(signerPath);
-      console.log('Your public key is ', address); // contact any peer 
-      // peer found
-      // sending address
-      // verifying address
-      // address verified
-      // updating peers list
-      // downloading blocks
-      // updating progress
-      // Records are up to date.
-      // show rest features
     } else if (choice === 2) {
       // Register into the network freshly
       this.register();

@@ -28,7 +28,10 @@ function () {
 
   WalletLoader.loadWallet = function () {
     // configuration changes according the platform (Linux, Windows)
-    var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
+    var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG); // getting the current user
+
+    var CURRENT_USER = require('os').userInfo().username;
+
     var path = undefined; // Location of wallet(directory)
 
     var wallet = {
@@ -39,6 +42,7 @@ function () {
 
     if (process.platform == 'linux') {
       path = config.getValue('PLATFORM_LINUX');
+      path = '/home/' + CURRENT_USER + path;
     } else if (process.platform == 'win32') {
       path = config.getValue('PLATFORM_WIN32');
     } // Path for the key pair concentanated with filename
