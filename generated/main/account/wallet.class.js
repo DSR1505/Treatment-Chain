@@ -47,7 +47,10 @@ function () {
 
   Wallet.prototype.storeWallet = function () {
     // this configuration specifically changes for the type of OS (Windows, Linux)
-    var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG); // converting the public key to string
+    var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG); // getting the current user
+
+    var CURRENT_USER = require('os').userInfo().username; // converting the public key to string
+
 
     var addr = this.keyPair.publicKey.toString(); // converting the private key to string
 
@@ -58,6 +61,7 @@ function () {
       // checking for the platform
       // if the OS is Linux then wallet path is in home directory
       path = config.getValue('PLATFORM_LINUX');
+      path = '/home/' + CURRENT_USER + path;
     } else if (process.platform === 'win32') {
       // this is for windows.
       // path is not clear
