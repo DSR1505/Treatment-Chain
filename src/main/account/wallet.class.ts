@@ -5,6 +5,7 @@ import { PUBKEYCRYPT_ALGORITHM } from "../utils/pubkeycrypt.enum";
 import AsymmetricKeysGenerator from "../utils/pubkeycryptkeygen.class";
 import filesytem = require('fs');
 import os = require('os')
+import { Z_PARTIAL_FLUSH } from "zlib";
 
 /**
  * The ACTUAL WALLET CLASS
@@ -44,6 +45,9 @@ export default class Wallet {
         // this configuration specifically changes for the type of OS (Windows, Linux)
         const config = new Configuration(RESOURCES.SYSTEM_CONFIG);
 
+        // getting the current user
+        const CURRENT_USER = require('os').userInfo().username;
+
         // converting the public key to string
         const addr = this.keyPair.publicKey.toString();
 
@@ -55,6 +59,8 @@ export default class Wallet {
         if (process.platform === 'linux') { // checking for the platform
             // if the OS is Linux then wallet path is in home directory
             path = config.getValue('PLATFORM_LINUX');
+            path = '/home/' + CURRENT_USER + path;
+            
         } else if (process.platform === 'win32') {
             // this is for windows.
             // path is not clear
