@@ -9,6 +9,12 @@ var pubkeycrypt_enum_1 = require("./pubkeycrypt.enum");
 var AsymmetricKeysGenerator =
 /** @class */
 function () {
+  /**
+   * Constructor
+   * @param crytpo the crypto module
+   * @param algo the algorithm selected
+   * @param k the key
+   */
   function AsymmetricKeysGenerator(crytpo, algo, k) {
     this.format = 'pem';
     this._crytoModule = crytpo;
@@ -17,9 +23,11 @@ function () {
   }
 
   Object.defineProperty(AsymmetricKeysGenerator.prototype, "algorithm", {
+    // getter  function for algorithms
     get: function get() {
       return this._algorithm;
     },
+    // setter  function for algorithm
     set: function set(algo) {
       this._algorithm = algo;
     },
@@ -27,6 +35,7 @@ function () {
     configurable: true
   });
   Object.defineProperty(AsymmetricKeysGenerator.prototype, "cryptoModule", {
+    // getter function for crypto module
     get: function get() {
       return this._crytoModule;
     },
@@ -34,15 +43,21 @@ function () {
     configurable: true
   });
   Object.defineProperty(AsymmetricKeysGenerator.prototype, "key", {
+    // getter function for key
     get: function get() {
       return this._key;
     },
+    // setter function for key
     set: function set(k) {
       this._key = k;
     },
     enumerable: false,
     configurable: true
   });
+  /**
+   * Get the private and public key pairs.
+   * Depending on the ALGORITHM selected from the enum a key pair is generated and returned.
+   */
 
   AsymmetricKeysGenerator.prototype.getKeyPair = function () {
     var keyPair;

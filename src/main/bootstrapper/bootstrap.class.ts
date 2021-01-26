@@ -23,10 +23,10 @@ export default class Main {
             // The condition here is you are already registered and you already have a wallet in your OS.
             console.log('Searching your wallet in the system');
             try {
-                const wallet = WalletLoader.loadWallet(Main.cryptoModule);
+                const wallet = WalletLoader.loadWallet();
                 console.log("*** WALLET FOUND ***");
-                console.log("Your Signer:\n", wallet.privateKey.toString());
-                console.log("Your Address:\n", wallet.publicKey.toString());
+                console.log("Your Signer:\n", wallet.privateKey);
+                console.log("Your Address:\n", wallet.publicKey);
                 // contact any peer 
                 // peer found
                 // sending address
@@ -39,22 +39,21 @@ export default class Main {
                 // show rest features.
             } catch (e) {
                 console.log('Wallet not found!\nTry to enter the keys manually\n');
+                const signerPath = readlineSync.question('Enter Signer Path:');
+                const passphrase = readlineSync.question('Enter password:', { hideEchoBack: true });
+                const address = WalletLoader.getAddress(signerPath);
+                console.log('Your public key is ', address);
+                // contact any peer 
+                // peer found
+                // sending address
+                // verifying address
+                // address verified
+                // updating peers list
+                // downloading blocks
+                // updating progress
+                // Records are up to date.
+                // show rest features
             }
-            
-            const signerPath = readlineSync.question('Enter Signer Path:');
-            const passphrase = readlineSync.question('Enter password:', { hideEchoBack: true });
-            const address = WalletLoader.getAddress(Main.cryptoModule, signerPath);
-            console.log('Your public key is ', address);
-            // contact any peer 
-            // peer found
-            // sending address
-            // verifying address
-            // address verified
-            // updating peers list
-            // downloading blocks
-            // updating progress
-            // Records are up to date.
-            // show rest features
         } else if (choice === 2) {
             // Register into the network freshly
             this.register();
@@ -68,7 +67,7 @@ export default class Main {
 
         // getting the country of the hospital in UPPERCASE
         let country = readlineSync.question("Enter the native country of hospital(IN UPPERCASE):");
-        
+
         // getting the passphrase
         // passphrase here is basically used to access the wallet
         let passphrase = readlineSync.question("Enter the passphrase:", { 'hideEchoBack': true })
@@ -107,7 +106,7 @@ export default class Main {
         }).catch(err => {
             console.error(err);
         });
-    } 
+    }
     /**
      * allFeatures function
      * will display all the options to the users once wallet is created.

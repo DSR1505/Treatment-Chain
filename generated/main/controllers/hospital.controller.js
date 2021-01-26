@@ -154,21 +154,29 @@ var find_hospitals_service_1 = require("../services/find-hospitals.service");
 var HospitalController =
 /** @class */
 function () {
+  /**
+   * The Constructor
+   * @param hospital passing hospital object
+   */
   function HospitalController(hospital) {
     this.hospital = hospital;
   }
 
   Object.defineProperty(HospitalController.prototype, "hospital", {
+    // getter function
     get: function get() {
       return this._hospital;
     },
+    // setter function
     set: function set(h) {
       this._hospital = h;
     },
     enumerable: false,
     configurable: true
-  });
-  // Register Hospital Function
+  }); // The registerHospital Function.
+  // this is an asynchronous function.
+  // returns a Promise of Type Hospital
+
   HospitalController.prototype.registerHospital = function () {
     return __awaiter(this, void 0, void 0, function () {
       var hospitalService, result;
@@ -184,22 +192,26 @@ function () {
             , hospitalService.findHospital(this.hospital.id)];
 
           case 1:
-            result = _a.sent();
+            result = _a.sent(); // returning the new Promise
+
             return [2
             /*return*/
             , new Promise(function (resolve, reject) {
-              var response = JSON.parse(result);
+              // parsing the entire result into JSON and storing it in response
+              var response = JSON.parse(result); // getting back individual values using arrays
+
               _this.hospital.name = response[0]['name'];
               _this.hospital.location = new location_model_1.default(response[0]['latitude'], response[0]['longitude']);
-              _this.hospital.email = response[0]['email'];
+              _this.hospital.email = response[0]['email']; // if there is no hospital name for that id
 
               if (_this.hospital.name === undefined) {
                 resolve(null);
               } else {
+                // if there exists a hospital name for the id.
                 resolve(_this.hospital);
               }
 
-              reject('Not Found');
+              reject('Not Found'); // if hospital not found for that id
             })];
         }
       });

@@ -4,50 +4,58 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var fileSystem = require("fs"); // for handling file system tasks.
-
+var fileSystem = require("fs");
 /**
- * Configuration Class to load.
- * This file basically Created Configuration Object and defined
+ * It will read files and return the value.
  */
+
+
 var Configuration =
 /** @class */
 function () {
+  // constructor
+  // we are loading the config file from the resource path mentioned /res/resource.enum.*
   function Configuration(resource) {
+    // defining the encoding as utf-8.
     this.ENCODING = 'utf8';
-    this.config = this.loadConfigResource(resource);
+    this.config = this.loadConfigResource(resource); // this function is defined in the below line.
   }
 
   Object.defineProperty(Configuration.prototype, "config", {
+    // getter function for config
     get: function get() {
       return this._config;
     },
+    // setter function for config
     set: function set(c) {
       this._config = c;
     },
     enumerable: false,
     configurable: true
-  });
+  }); // the loadConfigResource function performs the task of reading the config file in the 
+  // mentioned path.
 
-  // Loading the configuration Resource file from the '/res' path.
   Configuration.prototype.loadConfigResource = function (resource) {
     var temp = fileSystem.readFileSync(resource, {
-      encoding: this.ENCODING // grabbing the encoding.
+      encoding: this.ENCODING
     });
-    return JSON.parse(String(temp)); // parsing into json output
-  };
+    return JSON.parse(String(temp));
+  }; // commiting the resource usually means writing the config file
 
-  // Committing or writing the configuration inside file
+
   Configuration.prototype.commitResource = function (resource) {
     fileSystem.writeFileSync(resource, JSON.stringify(this.config));
-  };
+  }; // getter function for config key
+
 
   Configuration.prototype.getValue = function (key) {
     return this.config[key];
-  };
+  }; // setter function for config key
+
 
   Configuration.prototype.setValue = function (resource, key, value) {
-    this.config[key] = value;
+    this.config[key] = value; // after the config key value is set we need to write this value to the config file
+
     this.commitResource(resource);
   };
 

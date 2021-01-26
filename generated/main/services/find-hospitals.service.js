@@ -13,20 +13,31 @@ var https = require("https");
 var HospitalService =
 /** @class */
 function () {
+  /**
+   * The constructor
+   * @param country the country name
+   */
   function HospitalService(country) {
     var config = new config_class_1.default(resource_enum_1.RESOURCES.SYSTEM_CONFIG);
     this.serviceUrl = config.getValue("HOSPITAL_ENDPOINT") + config.getValue("COUNTRIES")[country];
   }
+  /**
+   * Finding Hospital by id in the network
+   * @param id id of the hospital
+   */
+
 
   HospitalService.prototype.findHospital = function (id) {
     return new Promise(function (resolve, reject) {
+      // setting header and other options along with the requests
       var options = {
         hostname: "treatmentchain-8a14.restdb.io",
         path: "/rest/hospital-india?q={\"identification_number\":\"" + id + "\"}",
         headers: {
           'x-apikey': 'cf0ccee45de3036fdb005d2048b8ea4b21203'
         }
-      };
+      }; // sending request to the given path to validate the hospital id
+
       var request = https.request(options, function (res) {
         var temp = '';
         res.on('data', function (chunk) {
