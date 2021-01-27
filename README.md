@@ -36,14 +36,12 @@ npm run test
 
 ## Author
 
-👤 **Aayush Shrivastava**
-👤 **Deepjyoti Roy**
+👤 **Aayush Shrivastava**<br />
+👤 **Deepjyoti Roy**<br />
 👤 **Deependra Singh Rajput**
 
 - Website: aayushbest.tech
-- Github: [@aayushbest](https://github.com/aayushbest)
--         @deepjyotiroy079(https://github.com/deepjyotiroy079)
--         @dsr1505(https://github.com/DSR1505)
+- Github: [@aayushbest](https://github.com/aayushbest), [@deepjyotiroy079](https://github.com/deepjyotiroy079), [@dsr1505](https://github.com/DSR1505)
 
 ## 🤝 Contributing
 
@@ -59,3 +57,5 @@ Copyright © 2021 [Aayush Shrivastava](https://github.com/aayushbest), [Deepjyot
 This project is [MIT](https://github.com/aayushbest/Treatment-Chain/blob/master/LICENSE) licensed.
 
 ---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
