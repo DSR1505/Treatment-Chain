@@ -45,7 +45,7 @@ npm run test
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/aayushbest/Treatment-Chain/issues). You can also take a look at the [contributing guide](https://github.com/aayushbest/Treatment-Chain/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />
 
 ## Show your support
 
