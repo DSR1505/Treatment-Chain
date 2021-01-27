@@ -54,6 +54,5 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2021 [Aayush Shrivastava](https://github.com/aayushbest), [Deepjyoti Roy](https://github.com/deepjyotiroy079), [Deependra Singh Rajput](https://github.com/DSR1505).<br />
-This project is [MIT](https://github.com/aayushbest/Treatment-Chain/blob/master/LICENSE) licensed.
 
 ---
