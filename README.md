@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to treatment-chain-project 👋</h1>
+<h1 align="center">Welcome to Treatment Chain Project 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/aayushbest/Treatment-Chain#readme" target="_blank">
@@ -6,9 +6,6 @@
   </a>
   <a href="https://github.com/aayushbest/Treatment-Chain/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/aayushbest/Treatment-Chain/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/aayushbest/treatment-chain-project" />
   </a>
 </p>
 
@@ -42,6 +39,12 @@ npm run test
 
 - Website: aayushbest.tech
 - Github: [@aayushbest](https://github.com/aayushbest), [@deepjyotiroy079](https://github.com/deepjyotiroy079), [@dsr1505](https://github.com/DSR1505)
+
+## Know more about the project
+
+- [Research Paper](https://github.com/aayushbest/Treatment-Chain/blob/main/docs/ResearchPaper.odt)
+- [Implementation Notes](https://github.com/aayushbest/Treatment-Chain/blob/main/docs/IMPLEMENTATION_NOTES.md)
+- [Conceptual Notes](https://github.com/aayushbest/Treatment-Chain/blob/main/docs/CONCEPTUAL_NOTES.md)
 
 ## 🤝 Contributing
 
