@@ -33,12 +33,9 @@ npm run test
 
 ## Author
 
-👤 **Aayush Shrivastava**<br />
-👤 **Deepjyoti Roy**<br />
-👤 **Deependra Singh Rajput**
-
-- Website: aayushbest.tech
-- Github: [@aayushbest](https://github.com/aayushbest), [@deepjyotiroy079](https://github.com/deepjyotiroy079), [@dsr1505](https://github.com/DSR1505)
+👤 **Aayush Shrivastava** [<img src="https://img.icons8.com/metro/17/000000/github.png"/>](https://github.com/aayushbest) [<img src="https://img.icons8.com/metro/17/000000/linkedin.png"/>](https://www.linkedin.com/in/aayushbest/) [<img src="https://img.icons8.com/metro/17/000000/twitter.png"/>](https://twitter.com/aayushbest) [<img src="https://img.icons8.com/metro/17/000000/instagram-new.png"/>](https://www.instagram.com/aayushbest/)<br />
+👤 **Deepjyoti Roy** [<img src="https://img.icons8.com/metro/17/000000/github.png"/>](https://github.com/deepjyotiroy079) [<img src="https://img.icons8.com/metro/17/000000/linkedin.png"/>](https://www.linkedin.com/in/deepjyoti-roy-079/) [<img src="https://img.icons8.com/metro/17/000000/twitter.png"/>](https://twitter.com/de_coder_079) [<img src="https://img.icons8.com/metro/17/000000/instagram-new.png"/>](https://www.instagram.com/de_coder_079/)<br />
+👤 **Deependra Singh Rajput** [<img src="https://img.icons8.com/metro/17/000000/github.png"/>](https://github.com/DSR1505) [<img src="https://img.icons8.com/metro/17/000000/linkedin.png"/>](https://www.linkedin.com/in/dsrajput/) [<img src="https://img.icons8.com/metro/17/000000/twitter.png"/>](https://twitter.com/dsr1505) [<img src="https://img.icons8.com/metro/17/000000/instagram-new.png"/>](https://www.instagram.com/dsr1505/)
 
 ## Know more about the project
 
